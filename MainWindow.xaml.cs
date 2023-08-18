@@ -16,6 +16,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Media.Animation;
 using System.IO;
 using System.Text.Json;
+using System.Linq;
 
 namespace ToDoList
 {
@@ -24,7 +25,7 @@ namespace ToDoList
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<Case> tasks = new ObservableCollection<Case>();
+        private ObservableCollection<Case> tasks = new ObservableCollection<Case>();
         public MainWindow()
         {
             InitializeComponent();
@@ -33,7 +34,6 @@ namespace ToDoList
 
             todoListBox.ItemsSource = tasks;
             todoListBox.DisplayMemberPath = "Name";
-            todoListBox.Items.Refresh();
 
         }
 
@@ -93,5 +93,11 @@ namespace ToDoList
         {
             SaveLoad.Saving(tasks);
         }
+
+        private void sortButton_Click(object sender, RoutedEventArgs e)
+        {
+            ToDoLogic.Sort(tasks);
+        }
+
     }
 }

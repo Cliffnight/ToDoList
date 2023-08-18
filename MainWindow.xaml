@@ -42,7 +42,7 @@
         <Label Name="testLabel" Grid.Column="1" Content="Label" HorizontalAlignment="Left" Margin="375,320,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <TextBox x:Name="contentBox" Grid.Column="1" HorizontalAlignment="Left" Margin="20,23,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="512" Panel.ZIndex="1" Grid.Row="1" Height="199" TextChanged="contentBox_TextChanged"/>
         <CheckBox x:Name="isDoneCheckBox" Grid.Column="1" Content="Выполено" HorizontalAlignment="Left" Margin="20,271,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="isDoneCheckBox_Checked" Unchecked="isDoneCheckBox_Unchecked"/>
-        <Button x:Name="sortButton" Content="Сортировка" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="-0.506,-0.18" Height="20" Width="70" Panel.ZIndex="1" Click="deleteButton_Click" Margin="160,0,0,0"/>
+        <Button x:Name="sortButton" Content="Сортировка" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="-0.506,-0.18" Height="20" Width="70" Panel.ZIndex="1" Click="sortButton_Click" Margin="160,0,0,0"/>
 
     </Grid>
 </Window>
