@@ -9,7 +9,6 @@
     <Window.Resources>
         <Style x:Key="ListBoxItemStyle" TargetType="ListBoxItem">
             <Setter Property="Margin" Value="5" />
-            <!-- Настройки отступов, по вашему усмотрению -->
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsDone}" Value="True">
                     <Setter Property="Background" Value="LightGreen" />
