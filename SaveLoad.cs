@@ -21,5 +21,24 @@ namespace ToDoList
             }
         }
 
+        public static void Loading(ObservableCollection<Case> tasks)
+        {
+            if (File.Exists("data.json"))
+            {
+                using (FileStream fileStream = new FileStream("data.json", FileMode.Open))
+                {
+                    ObservableCollection<Case> deserializedTasks = JsonSerializer.Deserialize<ObservableCollection<Case>>(fileStream);
+
+                    tasks.Clear();
+                    foreach (var task in deserializedTasks)
+                    {
+                        tasks.Add(task);
+                    }
+
+                }
+
+            }
+        }
+
     }
 }

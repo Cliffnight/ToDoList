@@ -29,29 +29,11 @@ namespace ToDoList
         {
             InitializeComponent();
 
-            if (File.Exists("data.json"))
-            {
-                using (FileStream fileStream = new FileStream("data.json", FileMode.Open))
-                {
-                    var options = new JsonSerializerOptions();
-                    ObservableCollection<Case> deserializedTasks = JsonSerializer.Deserialize<ObservableCollection<Case>>(fileStream, options);
-
-                    tasks.Clear();
-                    foreach (var task in deserializedTasks)
-                    {
-                        tasks.Add(task);
-                    }
-
-                }
-
-            }
-
+            SaveLoad.Loading(tasks);
 
             todoListBox.ItemsSource = tasks;
             todoListBox.DisplayMemberPath = "Name";
             todoListBox.Items.Refresh();
-
-
 
         }
 
