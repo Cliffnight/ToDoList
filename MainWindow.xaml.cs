@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using System.Windows.Media.Animation;
+using System.IO;
+using System.Text.Json;
 
 namespace ToDoList
 {
@@ -27,25 +29,37 @@ namespace ToDoList
         {
             InitializeComponent();
 
-            Case newCase = new Case("Новая запись...", "Введите текст...");
+            if (File.Exists("data.json"))
+            {
+                using (FileStream fileStream = new FileStream("data.json", FileMode.Open))
+                {
+                    var options = new JsonSerializerOptions();
+                    ObservableCollection<Case> deserializedTasks = JsonSerializer.Deserialize<ObservableCollection<Case>>(fileStream, options);
 
-            tasks.Add(newCase);
+                    tasks.Clear();
+                    foreach (var task in deserializedTasks)
+                    {
+                        tasks.Add(task);
+                    }
+
+                }
+
+            }
+
 
             todoListBox.ItemsSource = tasks;
             todoListBox.DisplayMemberPath = "Name";
+            todoListBox.Items.Refresh();
+
 
 
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-            Case newCase = new Case(taskTextBox.Text, contentBox.Text);
+            Case newCase = new Case("Новая запись", "Введите текст...");
 
-            if (!string.IsNullOrWhiteSpace(newCase.Name))
-            {
-                tasks.Add(newCase);
-                taskTextBox.Clear();
-            }
+            tasks.Add(newCase);
         }
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
@@ -60,7 +74,7 @@ namespace ToDoList
         private void todoListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             contentBox.Text = tasks[todoListBox.SelectedIndex].Content;
-            taskTextBox.Text = tasks[todoListBox.SelectedIndex].Name;
+            taskNameTextBox.Text = tasks[todoListBox.SelectedIndex].Name;
 
             if (tasks[todoListBox.SelectedIndex].IsDone)
             {
@@ -83,6 +97,19 @@ namespace ToDoList
            tasks[todoListBox.SelectedIndex].IsDone = false;
         }
 
+        private void taskNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tasks[todoListBox.SelectedIndex].Name = taskNameTextBox.Text;
+        }
 
+        private void contentBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tasks[todoListBox.SelectedIndex].Content = contentBox.Text;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            SaveLoad.Saving(tasks);
+        }
     }
 }

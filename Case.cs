@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace ToDoList
 {
@@ -22,8 +23,40 @@ namespace ToDoList
             this.isDone = false;
         }
         
-        public string Name { get { return name; } }
-        public string Content { get { return content; } }
+        public string Name 
+        { 
+            get { return name; } 
+            set 
+            { 
+                if(value != null)
+                {
+                    name = value;
+                    OnPropertyChanged(nameof(Name));
+                }
+                
+                else
+                {
+                    name = "Новая запись";
+                    OnPropertyChanged(nameof(Name));
+                }
+            } 
+        }
+        public string Content 
+        { 
+            get { return content; }
+
+            set
+            {
+                if (value != null)
+                {
+                    content = value;
+                }
+                else
+                {
+                    name = "Введите текст...";
+                }
+            }
+        }
 
         public bool IsDone
         {
@@ -44,6 +77,7 @@ namespace ToDoList
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
 
     }
 }
