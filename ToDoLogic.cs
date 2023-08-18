@@ -11,9 +11,18 @@ namespace ToDoList
     {
         public static void Sort(ObservableCollection<Case> tasks)
         {
-            var sortedTasks = tasks.OrderByDescending(task => task.IsDone).ToList();
+            var sortedTasks = from task in tasks
+                              orderby task.IsDone descending
+                              select task;
+
+            List<Case> sortedList = sortedTasks.ToList();
+
             tasks.Clear();
-            sortedTasks.ForEach(task => tasks.Add(task));
+
+            foreach (var task in sortedList)
+            {
+                tasks.Add(task);
+            }
         }
     }
 }
