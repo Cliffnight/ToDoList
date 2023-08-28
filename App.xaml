@@ -4,6 +4,31 @@
              xmlns:local="clr-namespace:ToDoList"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <!--Стиль ListBox -->
+        <Style TargetType="ListBox" x:Key="RoundedListBoxStyle">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="BorderBrush" Value="Black"></Setter>
+                </Style>
+            </Style.Resources>
+        </Style>
+        
+        <!--Цвет итемов -->
+        <Style x:Key="ListBoxItemStyle" TargetType="ListBoxItem">
+            <Setter Property="Height" Value="30" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsDone}" Value="True">
+                    <Setter Property="Background" Value="Gray" />
+                    <!-- Фон для выполненных задач -->
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsDone}" Value="False">
+                    <Setter Property="Background" Value="LightGreen"/>
+                    <!-- Фон для невыполненных задач -->
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
+    
+
 </Application>

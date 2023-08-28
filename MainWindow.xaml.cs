@@ -30,7 +30,7 @@ namespace ToDoList
         {
             InitializeComponent();
 
-            SaveLoad.Loading(tasks);
+            ToDoLogic.Loading(tasks);
 
             todoListBox.ItemsSource = tasks;
             todoListBox.DisplayMemberPath = "Name";
@@ -91,7 +91,7 @@ namespace ToDoList
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            SaveLoad.Saving(tasks);
+            ToDoLogic.Saving(tasks);
         }
 
         private void sortButton_Click(object sender, RoutedEventArgs e)
