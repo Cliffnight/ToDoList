@@ -4,30 +4,39 @@
              xmlns:local="clr-namespace:ToDoList"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <ResourceDictionary>
+            <!--Стиль ListBox -->
+            <Style TargetType="ListBox" x:Key="RoundedListBoxStyle">
+                <Style.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="BorderBrush" Value="Black"></Setter>
+                    </Style>
+                </Style.Resources>
+            </Style>
 
-        <!--Стиль ListBox -->
-        <Style TargetType="ListBox" x:Key="RoundedListBoxStyle">
-            <Style.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="BorderBrush" Value="Black"></Setter>
-                </Style>
-            </Style.Resources>
-        </Style>
-        
-        <!--Цвет итемов -->
-        <Style x:Key="ListBoxItemStyle" TargetType="ListBoxItem">
-            <Setter Property="Height" Value="30" />
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding IsDone}" Value="True">
-                    <Setter Property="Background" Value="Gray" />
-                    <!-- Фон для выполненных задач -->
-                </DataTrigger>
-                <DataTrigger Binding="{Binding IsDone}" Value="False">
-                    <Setter Property="Background" Value="LightGreen"/>
-                    <!-- Фон для невыполненных задач -->
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
+            <!--Цвет итемов -->
+            <Style x:Key="ListBoxItemStyle" TargetType="ListBoxItem">
+                <Setter Property="Height" Value="30" />
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding IsDone}" Value="True">
+                        <Setter Property="Background" Value="Gray" />
+                        <!-- Фон для выполненных задач -->
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding IsDone}" Value="False">
+                        <Setter Property="Background" Value="LightGreen"/>
+                        <!-- Фон для невыполненных задач -->
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+            <!--Material UI -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
     </Application.Resources>
     
 

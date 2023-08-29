@@ -1,14 +1,23 @@
 ﻿<Window x:Class="ToDoList.MainWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoList"
         mc:Ignorable="d"
-        Title="ToDoList" Height="450" Width="900" Closing="Window_Closing">
+        Title="ToDoList" Height="450" Width="900" Closing="Window_Closing"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
     <Window.Resources>
 
     </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -19,16 +28,15 @@
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
-        <Button Name="addButton" Content="Новое" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.188,0.252" Height="20" Width="80" Panel.ZIndex="1" Click="addButton_Click"/>
-        <Button Name="deleteButton" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="-0.506,-0.18" Height="20" Width="80" Panel.ZIndex="1" Click="deleteButton_Click" Margin="85,0,0,0"/>
-        <ListBox Name="todoListBox" Grid.Row="1" Panel.ZIndex="3" MouseDoubleClick="todoListBox_MouseDoubleClick" ItemContainerStyle="{StaticResource ListBoxItemStyle}" Style="{StaticResource RoundedListBoxStyle}">
-        </ListBox>
-        <TextBox x:Name="taskNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="527" Panel.ZIndex="1" TextChanged="taskNameTextBox_TextChanged"/>
+        <Button Name="addButton" Content="Новое" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.188,0.252" Height="30" Width="120" Panel.ZIndex="1" Click="addButton_Click" Margin="10,10,0,0"/>
+        <Button Name="deleteButton" Content="Удалить" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.506,-0.18" Height="30" Width="120" Panel.ZIndex="1" Click="deleteButton_Click" Margin="135,10,0,0"/>
+        <ListBox Name="todoListBox" Grid.Row="1" Panel.ZIndex="3" MouseDoubleClick="todoListBox_MouseDoubleClick" ItemContainerStyle="{StaticResource ListBoxItemStyle}">
 
-        <Label Name="testLabel" Grid.Column="1" Content="Label" HorizontalAlignment="Left" Margin="375,320,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="contentBox" Grid.Column="1" HorizontalAlignment="Left" Margin="5,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="527" Panel.ZIndex="1" Grid.Row="1" Height="243" TextChanged="contentBox_TextChanged"/>
-        <CheckBox x:Name="isDoneCheckBox" Grid.Column="1" Content="Выполено" HorizontalAlignment="Left" Margin="20,271,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="isDoneCheckBox_Checked" Unchecked="isDoneCheckBox_Unchecked"/>
-        <Button x:Name="sortButton" Content="Сортировка" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="-0.506,-0.18" Height="20" Width="80" Panel.ZIndex="1" Click="sortButton_Click" Margin="169,0,0,0"/>
+        </ListBox>
+        <TextBox x:Name="taskNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Margin="10,28,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="527" Panel.ZIndex="1" TextChanged="taskNameTextBox_TextChanged" Grid.Row="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Название"/>
+        <TextBox x:Name="contentBox" Grid.Column="1" HorizontalAlignment="Left" Margin="10,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="527" Panel.ZIndex="1" Grid.Row="1" Height="243" TextChanged="contentBox_TextChanged"/>
+        <CheckBox x:Name="isDoneCheckBox" Grid.Column="1" Content="Выполено" HorizontalAlignment="Left" Margin="20,343,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="isDoneCheckBox_Checked" Unchecked="isDoneCheckBox_Unchecked"/>
+        <Button x:Name="sortButton" Content="Сортировка" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.506,-0.18" Height="30" Width="120" Panel.ZIndex="1" Click="sortButton_Click" Margin="260,10,0,0" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

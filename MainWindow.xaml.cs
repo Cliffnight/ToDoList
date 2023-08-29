@@ -98,6 +98,5 @@ namespace ToDoList
         {
             ToDoLogic.Sort(tasks);
         }
-
     }
 }
