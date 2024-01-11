@@ -5,15 +5,6 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            <!--Стиль ListBox -->
-            <Style TargetType="ListBox" x:Key="RoundedListBoxStyle">
-                <Style.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="BorderBrush" Value="Black"></Setter>
-                    </Style>
-                </Style.Resources>
-            </Style>
-
             <!--Цвет итемов -->
             <Style x:Key="ListBoxItemStyle" TargetType="ListBoxItem">
                 <Setter Property="Height" Value="30" />
